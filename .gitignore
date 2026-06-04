@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Playwright test output & artifacts
+playwright-report/
+test-results/
+allure-results/
+results.xml
+
+# Playwright traces, videos, screenshots (common defaults)
+**/trace.zip
+**/traces/
+**/videos/
+**/screenshots/
+
+# Auth/session storage state (Playwright)
+.auth/
+**/.auth/
+*.storageState.json
+storageState*.json
+
+# Allure temp/lock files (if used)
+allure-report/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Caches / temp
+.cache/
+.tmp/
+tmp/
+
+# TypeScript / IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*.swo
