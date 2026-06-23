@@ -29,9 +29,8 @@ The active test implementation lives under `functional/`.
 **Source code:**
 
 - `functional/src/facade/**`
-  - page objects
-  - API clients
-  - endpoint method factories
+  - `api/http-client/**` (API client + endpoint method factories)
+  - `ui/page-object/**` (UI page objects)
 - `functional/src/fixtures/**`
   - API fixtures
   - UI fixtures
@@ -55,7 +54,7 @@ This is the canonical structure for the current repository and should be treated
 **Where:**
 
 - `functional/tests/api/**`
-- `functional/src/facade/http-client/**`
+- `functional/src/facade/api/http-client/**`
 - `functional/src/fixtures/api/**`
 
 **What it tests:**
@@ -87,7 +86,7 @@ This is the canonical structure for the current repository and should be treated
 **Where:**
 
 - `functional/tests/ui/**`
-- `functional/src/facade/page-object/**`
+- `functional/src/facade/ui/page-object/**`
 - `functional/src/fixtures/ui/**`
 
 **What it tests:**

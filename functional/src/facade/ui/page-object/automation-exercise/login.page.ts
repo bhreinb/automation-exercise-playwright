@@ -1,4 +1,4 @@
-import { MainApplicationBasePage } from "@facade/page-object/automation-exercise/main-application-base.page";
+import { MainApplicationBasePage } from "@facade/ui/page-object/automation-exercise/main-application-base.page";
 import { Locator, Page, test } from "@playwright/test";
 import { businessStep } from "@support/common/generic/business-function-messages";
 

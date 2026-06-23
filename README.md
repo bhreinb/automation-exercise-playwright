@@ -38,9 +38,11 @@ functional/
   src/
     expectations/   (custom expect helpers)
     facade/
-      http-client/  (API client base + endpoint factories)
-      page-object/  (page objects)
-      components/   (reusable UI components)
+      api/
+        http-client/  (API client base + endpoint factories)
+      ui/
+        page-object/  (page objects)
+        components/   (reusable UI components)
     fixtures/
       api/          (API fixtures)
       ui/           (UI fixtures)

@@ -1,5 +1,5 @@
-import { DatePickerComponent } from "@facade/components/automation-exercise/date-picker.component";
-import { MainApplicationBasePage } from "@facade/page-object/automation-exercise/main-application-base.page";
+import { DatePickerComponent } from "@facade/ui/components/automation-exercise/date-picker.component";
+import { MainApplicationBasePage } from "@facade/ui/page-object/automation-exercise/main-application-base.page";
 import type { AutomationUser } from "@models/common/automation-exercise/login.types";
 import { Locator, Page, test } from "@playwright/test";
 import { businessStep } from "@support/common/generic/business-function-messages";

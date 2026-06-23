@@ -1,5 +1,5 @@
 import { expect } from "@expectations/custom/generic/expect-extensions";
-import { EndpointMethodsFactory } from "@facade/http-client/automation-exercise/endpoint.methods.factory";
+import { EndpointMethodsFactory } from "@facade/api/http-client/automation-exercise/endpoint.methods.factory";
 import type { ApiFixtures } from "@models/api/automation-exercise/api.types";
 import type { APIRequestContext, Fixtures } from "@playwright/test";
 import { test as base } from "@playwright/test";

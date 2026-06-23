@@ -1,7 +1,7 @@
-import { AccountCreatedPage } from "@facade/page-object/automation-exercise/account-created.page";
-import { DeleteAccountPage } from "@facade/page-object/automation-exercise/delete-account.page";
-import { LoginPage } from "@facade/page-object/automation-exercise/login.page";
-import { SignupPage } from "@facade/page-object/automation-exercise/signup.page";
+import { AccountCreatedPage } from "@facade/ui/page-object/automation-exercise/account-created.page";
+import { DeleteAccountPage } from "@facade/ui/page-object/automation-exercise/delete-account.page";
+import { LoginPage } from "@facade/ui/page-object/automation-exercise/login.page";
+import { SignupPage } from "@facade/ui/page-object/automation-exercise/signup.page";
 import {
   test as adBlockerTest,
   expect,

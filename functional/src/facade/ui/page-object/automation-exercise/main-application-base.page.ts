@@ -1,5 +1,5 @@
-import { HeaderComponent } from "@facade/components/automation-exercise/header.component";
-import { BasePage } from "@facade/page-object/generic/base.page";
+import { HeaderComponent } from "@facade/ui/components/automation-exercise/header.component";
+import { BasePage } from "@facade/ui/page-object/generic/base.page";
 import { Locator, Page } from "@playwright/test";
 
 export abstract class MainApplicationBasePage extends BasePage {

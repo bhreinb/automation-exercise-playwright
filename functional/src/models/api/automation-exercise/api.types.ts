@@ -1,4 +1,4 @@
-import type { EndpointMethodsFactory } from "@facade/http-client/automation-exercise/endpoint.methods.factory";
+import type { EndpointMethodsFactory } from "@facade/api/http-client/automation-exercise/endpoint.methods.factory";
 
 export type ApiFixtures = {
   productsMethods: ReturnType<EndpointMethodsFactory["productsResources"]>;
