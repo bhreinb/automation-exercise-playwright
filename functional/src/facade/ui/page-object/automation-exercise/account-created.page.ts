@@ -17,9 +17,9 @@ export class AccountCreatedPage extends MainApplicationBasePage {
   /**
    * Executes the final workflow step to route out of the creation lander.
    */
-  async proceedToHomepage(): Promise<void> {
+  async completeRegistration(): Promise<void> {
     await test.step(
-      businessStep("Confirm creation state and proceed to homepage dashboard"),
+      businessStep("Confirm account creation"),
       async () => {
         await this.universalContinueButton.click();
       },

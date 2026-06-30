@@ -1,4 +1,3 @@
-// functional/src/tests/automation-exercise/register-user.spec.ts
 import { loginUiFixtures } from "@fixtures/ui/automation-exercise/login-ui.fixtures";
 import {
   test as uiTest,
@@ -18,34 +17,30 @@ test.describe("Login Page Tests", () => {
     "Test Case 1: Register User",
     { tag: "@regression" },
     async ({ registerUserByUi, accountCreatedPage }, testInfo) => {
-      // Note: The heavy browser form steps are already executed invisibly inside the 'registerUserByUi' hook fixture!
+        // Note: The heavy browser form steps are already executed invisibly inside the 'registerUserByUi' hook fixture!
 
-      // Then: Validate post-registration application state boundaries
-      await test.step(
-        businessStep(
-          "Validate redirect routing post profile registration success",
-        ),
-        async () => {
-          expect(
-            accountCreatedPage.getCurrentUrlNormalized(),
-            businessFunctionTested("register user redirects to base URL"),
-          ).toBeNormalizedBaseUrl(testInfo);
-        },
-      );
+        // Then: Validate post-registration application state boundaries
+        await test.step(
+            businessStep("Verify successful user registration"),
+            async () => {
+                expect(
+                    accountCreatedPage.getCurrentUrlNormalized(),
+                    businessFunctionTested("User should be on the home page after registration"),
+                ).toBeNormalizedBaseUrl(testInfo);
+            },
+        );
 
-      await test.step(
-        businessStep(
-          "Validate header displays the newly registered user context",
-        ),
-        async () => {
-          const loggedInUser =
-            await accountCreatedPage.header.getLoggedInUser();
-          expect(
-            loggedInUser,
-            businessFunctionTested("logged-in user matches created user"),
-          ).toBe(registerUserByUi.name);
-        },
-      );
+        await test.step(
+            businessStep("Verify logged-in username in header"),
+            async () => {
+                const loggedInUser = await accountCreatedPage.header.getLoggedInUser();
+                expect(
+                    loggedInUser,
+                    businessFunctionTested("The header should display the correct user name"),
+                ).toBe(registerUserByUi.name);
+            },
+        );
+
     },
   );
 });

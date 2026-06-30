@@ -37,4 +37,16 @@ export class HeaderComponent {
       },
     );
   }
+
+  /**
+   * Deletes the logged-in user account.
+   */
+  async deleteAccount(): Promise<void> {
+    await test.step(
+        businessFunctionTested("Delete user account via header link"),
+        async () => {
+          await this.deleteLink.click();
+        },
+    );
+  }
 }

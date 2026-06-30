@@ -56,10 +56,10 @@ export class SignupPage extends MainApplicationBasePage {
   /**
    * Fills out the baseline security and user profile options block
    */
-  async fillAccountInformation(user: AutomationUser): Promise<void> {
+  async fillIdentityDetails(user: AutomationUser): Promise<void> {
     await test.step(
       businessStep(
-        "Populate profile authentication data and security configurations",
+        "Populate account identity details",
       ),
       async () => {
         await this.title(user.title).check();
@@ -74,10 +74,10 @@ export class SignupPage extends MainApplicationBasePage {
   /**
    * Fills out the detailed address and geographic mapping block
    */
-  async fillAddressInformation(user: AutomationUser): Promise<void> {
+  async fillContactDetails(user: AutomationUser): Promise<void> {
     await test.step(
       businessStep(
-        "Populate physical address entries and contact communications data",
+        "Populate user contact details",
       ),
       async () => {
         await this.firstName.fill(user.firstname);

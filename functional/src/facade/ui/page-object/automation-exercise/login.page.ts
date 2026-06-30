@@ -33,32 +33,30 @@ export class LoginPage extends MainApplicationBasePage {
   }
 
   /**
-   * Encompasses the entire authorization sequence inside a high-level logging container.
+   * Logs in a user using their email and password.
    */
   async login(email: string, pass: string): Promise<void> {
     await test.step(
-      businessStep(`Authenticate account using credentials "${email}"`),
-      async () => {
-        await this.loginEmail.fill(email);
-        await this.loginPassword.fill(pass);
-        await this.loginSubmit.click();
-      },
+        businessStep("Log in with user credentials"),
+        async () => {
+          await this.loginEmail.fill(email);
+          await this.loginPassword.fill(pass);
+          await this.loginSubmit.click();
+        },
     );
   }
 
   /**
-   * Encompasses the initial stage registration pipeline inside a clean business step container.
+   * Initiates the signup process with a name and email.
    */
   async signup(name: string, email: string): Promise<void> {
     await test.step(
-      businessStep(
-        `Initiate new user signup registration for name "${name}" and email "${email}"`,
-      ),
-      async () => {
-        await this.signupName.fill(name);
-        await this.signupEmail.fill(email);
-        await this.signupSubmit.click();
-      },
+        businessStep("Initiate user signup"),
+        async () => {
+          await this.signupName.fill(name);
+          await this.signupEmail.fill(email);
+          await this.signupSubmit.click();
+        },
     );
   }
 

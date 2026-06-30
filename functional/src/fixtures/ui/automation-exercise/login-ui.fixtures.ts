@@ -35,12 +35,12 @@ export const loginUiFixtures: {
         await loginPage.signup(user.name, user.email);
 
         await signupPage.verifyPageLoaded();
-        await signupPage.fillAccountInformation(user);
-        await signupPage.fillAddressInformation(user);
+        await signupPage.fillIdentityDetails(user);
+        await signupPage.fillContactDetails(user);
         await signupPage.submitRegistrationForm();
 
         await accountCreatedPage.verifyPageLoaded();
-        await accountCreatedPage.proceedToHomepage();
+        await accountCreatedPage.completeRegistration();
       },
       { box: true },
     );
@@ -51,7 +51,7 @@ export const loginUiFixtures: {
     await base.step(
       "Fixture: registerUserByUi (teardown) - Clean up registered account via UI layout links",
       async () => {
-        await accountCreatedPage.header.deleteLink.click();
+        await accountCreatedPage.header.deleteAccount();
         await deleteAccountPage.verifyPageLoaded();
         await deleteAccountPage.proceedToHomepage();
       },
