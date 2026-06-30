@@ -6,7 +6,8 @@ import type { AutomationUser } from "@models/common/automation-exercise/login.ty
 import type { LoginUiFlows } from "@models/ui/automation-exercise/login-ui.types";
 import type { Pages } from "@models/ui/automation-exercise/pages.types";
 import { LoginSignupData } from "@payloads/common/automation-exercise/login-signup-data";
-import type { Page, TestFixture } from "@playwright/test";
+import type { Page, TestFixture, TestInfo } from "@playwright/test";
+import { attachments } from "@support/common/generic/attachments";
 
 import { test as base } from "./pages.fixtures";
 
@@ -16,6 +17,7 @@ export const loginUiFixtures: {
   registerUserByUi: async (
     { page }: { page: Page },
     use: (user: AutomationUser) => Promise<void>,
+    testInfo: TestInfo,
   ) => {
     const user: AutomationUser = LoginSignupData.createFullFakeUser();
 
@@ -44,6 +46,9 @@ export const loginUiFixtures: {
       },
       { box: true },
     );
+
+    // Attach generated user only after successful fixture setup
+    attachments.attachJsonIfNotEmpty(testInfo, "test-user", user);
 
     await use(user);
 

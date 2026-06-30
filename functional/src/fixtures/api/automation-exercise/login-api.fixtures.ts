@@ -2,7 +2,8 @@ import { ApiFixtures } from "@models/api/automation-exercise/api.types";
 import type { LoginApiFlows } from "@models/api/automation-exercise/login-api.types";
 import type { AutomationUser } from "@models/common/automation-exercise/login.types";
 import { LoginSignupData } from "@payloads/common/automation-exercise/login-signup-data";
-import type { TestFixture } from "@playwright/test";
+import type { TestFixture, TestInfo } from "@playwright/test";
+import { attachments } from "@support/common/generic/attachments";
 
 import { test as base } from "./api.fixture";
 
@@ -16,6 +17,7 @@ export const loginApiFixtures: {
   registerUserByApi: async (
     { createAccountMethods, deleteAccountMethods },
     use,
+    testInfo: TestInfo,
   ) => {
     const user: AutomationUser = LoginSignupData.createFullFakeUser();
 
@@ -36,15 +38,20 @@ export const loginApiFixtures: {
       },
     );
 
+    // Attach generated user only after successful fixture setup
+    attachments.attachJsonIfNotEmpty(testInfo, "test-user", user);
+
     await use(user);
 
     await base.step(
       "Post-condition: Clean up seeded user account via API",
       async () => {
-        const deleteAccountResponse = await deleteAccountMethods.deleteAccount({
-          email: user.email,
-          password: user.password,
-        });
+        const deleteAccountResponse = await deleteAccountMethods.deleteAccount(
+          {
+            email: user.email,
+            password: user.password,
+          },
+        );
         const response = await deleteAccountResponse.json();
         const isSuccessful =
           response.responseCode === 200 &&

@@ -17,30 +17,33 @@ test.describe("Login Page Tests", () => {
     "Test Case 1: Register User",
     { tag: "@regression" },
     async ({ registerUserByUi, accountCreatedPage }, testInfo) => {
-        // Note: The heavy browser form steps are already executed invisibly inside the 'registerUserByUi' hook fixture!
+      // Note: The heavy browser form steps are already executed invisibly inside the 'registerUserByUi' hook fixture!
 
-        // Then: Validate post-registration application state boundaries
-        await test.step(
-            businessStep("Verify successful user registration"),
-            async () => {
-                expect(
-                    accountCreatedPage.getCurrentUrlNormalized(),
-                    businessFunctionTested("User should be on the home page after registration"),
-                ).toBeNormalizedBaseUrl(testInfo);
-            },
-        );
+      // Then: Validate post-registration application state boundaries
+      await test.step(
+        businessStep("Verify successful user registration"),
+        async () => {
+          expect(
+            accountCreatedPage.getCurrentUrlNormalized(),
+            businessFunctionTested(
+              "User should be on the home page after registration",
+            ),
+          ).toBeNormalizedBaseUrl(testInfo);
+        },
+      );
 
-        await test.step(
-            businessStep("Verify logged-in username in header"),
-            async () => {
-                const loggedInUser = await accountCreatedPage.header.getLoggedInUser();
-                expect(
-                    loggedInUser,
-                    businessFunctionTested("The header should display the correct user name"),
-                ).toBe(registerUserByUi.name);
-            },
-        );
-
+      await test.step(
+        businessStep("Verify logged-in username in header"),
+        async () => {
+          const loggedInUser = await accountCreatedPage.header.getLoggedInUser();
+          expect(
+            loggedInUser,
+            businessFunctionTested(
+              "The header should display the correct user name",
+            ),
+          ).toBe(registerUserByUi.name);
+        },
+      );
     },
   );
 });

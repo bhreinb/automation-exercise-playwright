@@ -1,16 +1,31 @@
 import { test, expect } from "@fixtures/api/automation-exercise/api.fixture";
+import { attachments } from "@support/common/generic/attachments";
 import { businessStep } from "@support/common/generic/business-function-messages";
 
 test.describe("Products Resources Tests", () => {
   test(
     "API 1: GET All Products List",
     { tag: ["@smoke", "@regression"] },
-    async ({ productsMethods }) => {
+    async ({ productsMethods }, testInfo) => {
+      attachments.attachApiRequest(
+        testInfo,
+        "GET",
+        "/api/productsList",
+        {},
+      );
+
       // Given & When...
       const productsResponse = await productsMethods.getAllProducts();
 
       // Then...
       const response = await productsResponse.json();
+      attachments.attachApiResponse(
+        testInfo,
+        "GET",
+        "/api/productsList",
+        response,
+      );
+
       expect(
         response.responseCode,
         businessStep("retrieve all products list returns HTTP 200."),
@@ -27,6 +42,7 @@ test.describe("Products Resources Tests", () => {
         Array.isArray(response.products),
         businessStep("products list is an array."),
       ).toBe(true);
+
       response.products.forEach((product: object, index: number) => {
         expect(
           Object.keys(product).sort(),
@@ -41,12 +57,26 @@ test.describe("Products Resources Tests", () => {
   test(
     "API 2: POST To All Products List",
     { tag: "@regression" },
-    async ({ productsMethods }) => {
+    async ({ productsMethods }, testInfo) => {
+      attachments.attachApiRequest(
+        testInfo,
+        "POST",
+        "/api/productsList",
+        {},
+      );
+
       // Given & When...
       const productsResponse = await productsMethods.postToAllProducts();
 
       // Then...
       const response = await productsResponse.json();
+      attachments.attachApiResponse(
+        testInfo,
+        "POST",
+        "/api/productsList",
+        response,
+      );
+
       expect(
         response.responseCode,
         businessStep(
