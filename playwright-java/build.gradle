@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+group = 'com.example'
+version = '1.0.0-SNAPSHOT'
+
+def junitJupiterVersion = '5.10.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitJupiterVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// --- Skeleton JUnit tag-based test tasks (mirrors npm ts:* conventions) ---
+// Add @Tag("smoke") / @Tag("regression") / @Tag("integration") to your tests.
+
+def junitPlatformConfigFor = { String tagName ->
+    junitPlatform {
+        if (tagName) {
+            includeTags tagName
+        }
+    }
+}
+
+tasks.register('testSmoke', Test) {
+    description = 'Runs JUnit tests tagged with @Tag("smoke").'
+    group = 'verification'
+    useJUnitPlatform {
+        includeTags 'smoke'
+    }
+}
+
+tasks.register('testRegression', Test) {
+    description = 'Runs JUnit tests tagged with @Tag("regression"). (No-op until you add tagged tests.)'
+    group = 'verification'
+    useJUnitPlatform {
+        includeTags 'regression'
+    }
+}

@@ -24,28 +24,28 @@ Primary goals:
 
 ### 2.1 Current Project Structure
 
-The active test implementation lives under `functional/`.
+The active test implementation lives under `playwright-typescript/functional/`.
 
 **Source code:**
 
-- `functional/src/facade/**`
+- `playwright-typescript/functional/src/facade/**`
   - `api/http-client/**` (API client + endpoint method factories)
   - `ui/page-object/**` (UI page objects)
-- `functional/src/fixtures/**`
+- `playwright-typescript/functional/src/fixtures/**`
   - API fixtures
   - UI fixtures
   - integration fixtures
-- `functional/src/models/**`
+- `playwright-typescript/functional/src/models/**`
   - shared fixture and payload typing
-- `functional/src/support/**`
+- `playwright-typescript/functional/src/support/**`
   - reporting helpers
   - teardown support
 
 **Test entry points:**
 
-- `functional/tests/api/**`
-- `functional/tests/ui/**`
-- `functional/tests/integration/**`
+- `playwright-typescript/functional/tests/api/**`
+- `playwright-typescript/functional/tests/ui/**`
+- `playwright-typescript/functional/tests/integration/**`
 
 This is the canonical structure for the current repository and should be treated as the source of truth instead of any older `e2e/**` references.
 
@@ -53,9 +53,9 @@ This is the canonical structure for the current repository and should be treated
 
 **Where:**
 
-- `functional/tests/api/**`
-- `functional/src/facade/api/http-client/**`
-- `functional/src/fixtures/api/**`
+- `playwright-typescript/functional/tests/api/**`
+- `playwright-typescript/functional/src/facade/api/http-client/**`
+- `playwright-typescript/functional/src/fixtures/api/**`
 
 **What it tests:**
 
@@ -85,9 +85,9 @@ This is the canonical structure for the current repository and should be treated
 
 **Where:**
 
-- `functional/tests/ui/**`
-- `functional/src/facade/ui/page-object/**`
-- `functional/src/fixtures/ui/**`
+- `playwright-typescript/functional/tests/ui/**`
+- `playwright-typescript/functional/src/facade/ui/page-object/**`
+- `playwright-typescript/functional/src/fixtures/ui/**`
 
 **What it tests:**
 
@@ -107,8 +107,8 @@ This is the canonical structure for the current repository and should be treated
 
 **Where:**
 
-- `functional/tests/integration/**`
-- `functional/src/fixtures/integration/**`
+- `playwright-typescript/functional/tests/integration/**`
+- `playwright-typescript/functional/src/fixtures/integration/**`
 - supporting API/UI fixtures under their respective fixture folders
 
 **What it tests:**
@@ -183,7 +183,7 @@ Readable reporting is treated as part of the architecture, not just an output co
 
 The repository already uses reporting helpers from:
 
-- `functional/src/support/common/generic/business-function-messages.ts`
+- `playwright-typescript/functional/src/support/common/generic/business-function-messages.ts`
 
 Current conventions:
 
@@ -222,7 +222,7 @@ This is especially useful for:
 
 ## 5) Playwright Configuration Strategy
 
-The Playwright configuration is defined in `playwright.config.ts`.
+The Playwright configuration is defined in `playwright-typescript/playwright.config.ts`.
 
 ### 5.1 Active Projects
 
