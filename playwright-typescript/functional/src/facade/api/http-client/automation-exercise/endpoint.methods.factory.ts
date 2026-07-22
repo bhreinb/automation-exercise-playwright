@@ -6,68 +6,52 @@ import {
 import { BaseApiClient } from "../generic/base.api";
 
 export class EndpointMethodsFactory extends BaseApiClient {
-  productsResources() {
+  /**
+   * Domain style (mirrors Java EndpointMethodsFactory)
+   */
+  products() {
     const productsListPath: string = "/api/productsList";
+    const productsSearchPath: string = "/api/searchProduct";
+
     return {
       getAllProducts: () => this.get(productsListPath, {}),
       postToAllProducts: () => this.post(productsListPath, {}),
+      postToSearchProduct: (form: ApiFormPayload) =>
+        this.post(productsSearchPath, form),
     };
   }
 
-  brandsResources() {
+  brands() {
     const brandsListPath: string = "/api/brandsList";
+
     return {
       getAllBrands: () => this.get(brandsListPath, {}),
       putToAllBrands: () => this.put(brandsListPath, {}),
     };
   }
 
-  productsSearchResources() {
-    const productsSearchPath = "/api/searchProduct";
-    return {
-      postToSearchProduct: (form: ApiFormPayload) =>
-        this.post(productsSearchPath, form),
-    };
-  }
-
-  verifyLoginResources() {
+  account() {
     const verifyLoginPath: string = "/api/verifyLogin";
+    const createAccountPath: string = "/api/createAccount";
+    const deleteAccountPath: string = "/api/deleteAccount";
+    const updateAccountPath: string = "/api/updateAccount";
+    const getUserDetailByEmailPath: string = "/api/getUserDetailByEmail";
+
     return {
       postToVerifyLogin: (form: ApiFormPayload) =>
         this.post(verifyLoginPath, form),
       deleteToVerifyLogin: () => this.delete(verifyLoginPath, {}),
-    };
-  }
 
-  createAccountResources() {
-    const createAccountPath: string = "/api/createAccount";
-    return {
       postToCreateAccount: (form: ApiFormPayload) =>
         this.post(createAccountPath, form),
-    };
-  }
-
-  deleteAccountResources() {
-    const deleteAccountPath: string = "/api/deleteAccount";
-    return {
       deleteAccount: (form: ApiFormPayload) =>
         this.delete(deleteAccountPath, form),
-    };
-  }
 
-  updateAccountResources() {
-    const updateAccountPath: string = "/api/updateAccount";
-    return {
       putToUpdateAccount: (form: ApiFormPayload) =>
         this.put(updateAccountPath, form),
-    };
-  }
 
-  userAccountResources() {
-    const getUserDetailByEmailPath: string = "/api/getUserDetailByEmail";
-    return {
-      getUserDetailByEmail: (form: ApiQueryParams) =>
-        this.get(getUserDetailByEmailPath, form),
+      getUserDetailByEmail: (params: ApiQueryParams) =>
+        this.get(getUserDetailByEmailPath, params),
     };
   }
 }

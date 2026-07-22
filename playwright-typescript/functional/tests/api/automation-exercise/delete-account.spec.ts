@@ -12,7 +12,7 @@ const test = apiTest.extend<LoginApiFlows>(loginApiFixtures);
 test.describe("Delete Account Resources Tests", () => {
   test("API 12: DELETE METHOD To Delete User Account", async ({
     registerUserByApi,
-    deleteAccountMethods,
+    account,
   }, testInfo) => {
     const request = {
       email: registerUserByApi.email,
@@ -28,7 +28,7 @@ test.describe("Delete Account Resources Tests", () => {
 
     // Given & When...
     const deleteAccountResponse =
-      await deleteAccountMethods.deleteAccount(request);
+      await account.deleteAccount(request);
 
     // Then...
     const response = await deleteAccountResponse.json();

@@ -12,7 +12,7 @@ const test = apiTest.extend<LoginApiFlows>(loginApiFixtures);
 test.describe("User Detail Resources Tests", () => {
   test("API 14: GET user account detail by email", async ({
     registerUserByApi,
-    userAccountMethods,
+    account,
   }, testInfo) => {
     const request = {
       email: registerUserByApi.email,
@@ -27,7 +27,7 @@ test.describe("User Detail Resources Tests", () => {
 
     // Given & When...
     const userDetailResponse =
-      await userAccountMethods.getUserDetailByEmail(request);
+      await account.getUserDetailByEmail(request);
 
     // Then...
     const response = await userDetailResponse.json();

@@ -12,7 +12,7 @@ const test = apiTest.extend<LoginApiFlows>(loginApiFixtures);
 test.describe("Verify Login Resources Tests", () => {
   test("API 7: POST To Verify Login with valid details", async ({
     registerUserByApi,
-    verifyLoginMethods,
+    account,
   }, testInfo) => {
     const request = {
       email: registerUserByApi.email,
@@ -23,7 +23,7 @@ test.describe("Verify Login Resources Tests", () => {
 
     // Given & When...
     const verifyLoginResponse =
-      await verifyLoginMethods.postToVerifyLogin(request);
+      await account.postToVerifyLogin(request);
 
     // Then...
     const response = await verifyLoginResponse.json();
@@ -45,7 +45,7 @@ test.describe("Verify Login Resources Tests", () => {
   });
 
   test("API 8: POST To Verify Login without email parameter", async ({
-    verifyLoginMethods,
+    account,
   }, testInfo) => {
     const request = {
       password: "password123",
@@ -55,7 +55,7 @@ test.describe("Verify Login Resources Tests", () => {
 
     // Given & When...
     const verifyLoginResponse =
-      await verifyLoginMethods.postToVerifyLogin(request);
+      await account.postToVerifyLogin(request);
 
     // Then...
     const response = await verifyLoginResponse.json();
@@ -81,12 +81,12 @@ test.describe("Verify Login Resources Tests", () => {
   });
 
   test("API 9: DELETE To Verify Login", async ({
-    verifyLoginMethods,
+    account,
   }, testInfo) => {
     attachments.attachApiRequest(testInfo, "DELETE", "/api/verifyLogin", {});
 
     // Given & When...
-    const verifyLoginResponse = await verifyLoginMethods.deleteToVerifyLogin();
+    const verifyLoginResponse = await account.deleteToVerifyLogin();
 
     // Then...
     const response = await verifyLoginResponse.json();
@@ -110,7 +110,7 @@ test.describe("Verify Login Resources Tests", () => {
   });
 
   test("API 10: POST To Verify Login with invalid details", async ({
-    verifyLoginMethods,
+    account,
   }, testInfo) => {
     const request = {
       email: "joe.bloggs@email.com",
@@ -121,7 +121,7 @@ test.describe("Verify Login Resources Tests", () => {
 
     // Given & When...
     const verifyLoginResponse =
-      await verifyLoginMethods.postToVerifyLogin(request);
+      await account.postToVerifyLogin(request);
 
     // Then...
     const response = await verifyLoginResponse.json();

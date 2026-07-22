@@ -5,90 +5,35 @@ import type { APIRequestContext, Fixtures } from "@playwright/test";
 import { test as base } from "@playwright/test";
 
 export const apiFixtures: Fixtures = {
-  productsMethods: [
+  products: [
     async (
       { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["productsMethods"]) => Promise<void>,
+      use: (methods: ApiFixtures["products"]) => Promise<void>,
     ) => {
       const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.productsResources());
+      await use(catalog.products());
     },
     { box: "self" },
   ],
 
-  brandsMethods: [
+  brands: [
     async (
       { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["brandsMethods"]) => Promise<void>,
+      use: (methods: ApiFixtures["brands"]) => Promise<void>,
     ) => {
       const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.brandsResources());
+      await use(catalog.brands());
     },
     { box: "self" },
   ],
 
-  productsSearchMethods: [
+  account: [
     async (
       { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["productsSearchMethods"]) => Promise<void>,
+      use: (methods: ApiFixtures["account"]) => Promise<void>,
     ) => {
       const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.productsSearchResources());
-    },
-    { box: "self" },
-  ],
-
-  verifyLoginMethods: [
-    async (
-      { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["verifyLoginMethods"]) => Promise<void>,
-    ) => {
-      const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.verifyLoginResources());
-    },
-    { box: "self" },
-  ],
-
-  createAccountMethods: [
-    async (
-      { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["createAccountMethods"]) => Promise<void>,
-    ) => {
-      const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.createAccountResources());
-    },
-    { box: "self" },
-  ],
-
-  deleteAccountMethods: [
-    async (
-      { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["deleteAccountMethods"]) => Promise<void>,
-    ) => {
-      const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.deleteAccountResources());
-    },
-    { box: "self" },
-  ],
-
-  updateAccountMethods: [
-    async (
-      { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["updateAccountMethods"]) => Promise<void>,
-    ) => {
-      const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.updateAccountResources());
-    },
-    { box: "self" },
-  ],
-
-  userAccountMethods: [
-    async (
-      { request }: { request: APIRequestContext },
-      use: (methods: ApiFixtures["userAccountMethods"]) => Promise<void>,
-    ) => {
-      const catalog = new EndpointMethodsFactory(request);
-      await use(catalog.userAccountResources());
+      await use(catalog.account());
     },
     { box: "self" },
   ],

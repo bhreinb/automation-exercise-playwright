@@ -12,7 +12,7 @@ const test = apiTest.extend<LoginApiFlows>(loginApiFixtures);
 test.describe("Update Account Resources Tests", () => {
   test("API 13: PUT METHOD To Update User Account", async ({
     registerUserByApi,
-    updateAccountMethods,
+    account,
   }, testInfo) => {
     // Given...
     registerUserByApi.country = "Australia";
@@ -28,7 +28,7 @@ test.describe("Update Account Resources Tests", () => {
 
     // When...
     const updateAccountResponse =
-      await updateAccountMethods.putToUpdateAccount(registerUserByApi);
+      await account.putToUpdateAccount(registerUserByApi);
 
     // Then...
     const response = await updateAccountResponse.json();

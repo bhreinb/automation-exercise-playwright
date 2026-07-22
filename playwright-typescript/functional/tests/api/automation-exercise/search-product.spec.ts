@@ -6,7 +6,7 @@ test.describe("Search Product Resources Tests", () => {
   test(
     "API 5: POST To Search Product",
     { tag: ["@smoke", "@regression"] },
-    async ({ productsSearchMethods }, testInfo) => {
+    async ({ products }, testInfo) => {
       const request = {
         search_product: "tshirt",
       };
@@ -20,7 +20,7 @@ test.describe("Search Product Resources Tests", () => {
 
       // Given & When...
       const searchProductResponse =
-        await productsSearchMethods.postToSearchProduct(request);
+        await products.postToSearchProduct(request);
 
       // Then...
       const response = await searchProductResponse.json();
@@ -60,7 +60,7 @@ test.describe("Search Product Resources Tests", () => {
   );
 
   test("API 6: POST To Search Product without search_product parameter", async ({
-    productsSearchMethods,
+    products,
   }, testInfo) => {
     const request = {};
 
@@ -73,7 +73,7 @@ test.describe("Search Product Resources Tests", () => {
 
     // Given & When...
     const searchProductResponse =
-      await productsSearchMethods.postToSearchProduct(request);
+      await products.postToSearchProduct(request);
 
     // Then...
     const response = await searchProductResponse.json();

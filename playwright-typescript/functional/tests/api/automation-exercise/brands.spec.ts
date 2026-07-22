@@ -6,11 +6,11 @@ test.describe("Brands Resources Tests", () => {
   test(
     "API 3: GET All Brands List",
     { tag: ["@smoke", "@regression"] },
-    async ({ brandsMethods }, testInfo) => {
+    async ({ brands }, testInfo) => {
       attachments.attachApiRequest(testInfo, "GET", "/api/brandsList", {});
 
       // Given & When...
-      const brandsResponse = await brandsMethods.getAllBrands();
+      const brandsResponse = await brands.getAllBrands();
 
       // Then...
       const response = await brandsResponse.json();
@@ -50,11 +50,11 @@ test.describe("Brands Resources Tests", () => {
   test(
     "API 4: PUT To All Brands List",
     { tag: "@regression" },
-    async ({ brandsMethods }, testInfo) => {
+    async ({ brands }, testInfo) => {
       attachments.attachApiRequest(testInfo, "GET", "/api/brandsList", {});
 
       // Given & When...
-      const productsResponse = await brandsMethods.putToAllBrands();
+      const productsResponse = await brands.putToAllBrands();
 
       // Then...
       const response = await productsResponse.json();

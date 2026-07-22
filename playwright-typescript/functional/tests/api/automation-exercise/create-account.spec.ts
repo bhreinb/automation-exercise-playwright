@@ -6,7 +6,7 @@ import { businessStep } from "@support/common/generic/business-function-messages
 
 test.describe("Create Account Resources Tests", () => {
   test("API 11: POST To Create/Register User Account", async ({
-    createAccountMethods,
+    account,
   }, testInfo) => {
     // Given...
     const fakeUser: AutomationUser = LoginSignupData.createFullFakeUser();
@@ -20,7 +20,7 @@ test.describe("Create Account Resources Tests", () => {
 
     // When...
     const createAccountsResponse =
-      await createAccountMethods.postToCreateAccount(fakeUser);
+      await account.postToCreateAccount(fakeUser);
 
     // Then...
     const response = await createAccountsResponse.json();

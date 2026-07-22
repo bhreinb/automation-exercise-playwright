@@ -11,11 +11,11 @@ import { test as base } from "./api.fixture";
 export const loginApiFixtures: {
   [K in keyof LoginApiFlows]: TestFixture<
     LoginApiFlows[K],
-    Pick<ApiFixtures, "createAccountMethods" | "deleteAccountMethods">
+    Pick<ApiFixtures, "account">
   >;
 } = {
   registerUserByApi: async (
-    { createAccountMethods, deleteAccountMethods },
+    { account },
     use,
     testInfo: TestInfo,
   ) => {
@@ -25,7 +25,7 @@ export const loginApiFixtures: {
       `Pre-condition: Seed temporary user account (${user.email})`,
       async () => {
         const createAccountsResponse =
-          await createAccountMethods.postToCreateAccount(user);
+          await account.postToCreateAccount(user);
         const response = await createAccountsResponse.json();
         if (
           response.responseCode !== 201 ||
@@ -46,7 +46,7 @@ export const loginApiFixtures: {
     await base.step(
       "Post-condition: Clean up seeded user account via API",
       async () => {
-        const deleteAccountResponse = await deleteAccountMethods.deleteAccount({
+        const deleteAccountResponse = await account.deleteAccount({
           email: user.email,
           password: user.password,
         });
